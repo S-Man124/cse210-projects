@@ -4,12 +4,23 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
-    // Store a list of journal prompts
-    public List<string> _prompts = new List<string>();
+    public List<string> _prompts = new List<string>()
+    {
+        "What was the best part of my day?",
+        "How did I see the hand of the Lord in my life today?",
+        "What important lesson did I learn today?",
+        "Who made a positive difference in my life today?",
+        "What am I most grateful for today?",
+        "What challenge did I overcome today?",
+        "What could I do better tomorrow?"
+    };
 
-    // Return a random journal prompt
     public string GetRandomPrompt()
     {
-        return "";
+        Random random = new Random();
+
+        int index = random.Next(_prompts.Count);
+
+        return _prompts[index];
     }
 }
