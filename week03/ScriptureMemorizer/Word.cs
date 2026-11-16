@@ -15,13 +15,13 @@ public class Word
     // Hide the word
     public void Hide()
     {
-        // Implementation will be added later
+        _isHidden = true;
     }
 
     // Show the word
     public void Show()
     {
-        // Implementation will be added later
+        _isHidden = false;
     }
 
     // Check whether the word is hidden
@@ -30,9 +30,28 @@ public class Word
         return _isHidden;
     }
 
-    // Get the word's display text
+    // Return the word or underscores
+    
     public string GetDisplayText()
     {
-        return _text;
+        if (!_isHidden)
+        {
+            return _text;
+        }
+
+        // Replace letters with underscores,
+        // but preserve punctuation and numbers.
+        char[] characters = _text.ToCharArray();
+
+        for (int i = 0; i < characters.Length; i++)
+        {
+            if (char.IsLetter(characters[i]))
+            {
+                characters[i] = '_';
+            }
+        }
+
+        return new string(characters);
     }
+
 }
